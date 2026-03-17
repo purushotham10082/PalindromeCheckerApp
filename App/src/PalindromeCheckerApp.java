@@ -2,14 +2,18 @@ import java.util.Scanner;
 
 public class PalindromeCheckerApp {
 
-    static boolean isPalindrome(String str, int start, int end) {
-        if (start >= end)
-            return true;
+    static boolean isPalindrome(String str) {
+        int start = 0;
+        int end = str.length() - 1;
 
-        if (str.charAt(start) != str.charAt(end))
-            return false;
+        while (start < end) {
+            if (str.charAt(start) != str.charAt(end))
+                return false;
 
-        return isPalindrome(str, start + 1, end - 1);
+            start++;
+            end--;
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -20,7 +24,7 @@ public class PalindromeCheckerApp {
 
         input = input.replaceAll("\\s+", "").toLowerCase();
 
-        if (isPalindrome(input, 0, input.length() - 1))
+        if (isPalindrome(input))
             System.out.println("Palindrome");
         else
             System.out.println("Not a Palindrome");
